@@ -13,6 +13,6 @@ RUN curl -s https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-l
 # Setup default environment variables
 ENV MONGODB_HOST=mongodb MONGODB__PORT=27017 LISTEN_PORT=3307 DATABASE="" COLLECTION=""
 
-COPY aggregate.py run_bi_connector.sh /tmp/
+COPY aggregate.py entry.sh /tmp/
 
-ENTRYPOINT [ "/tmp/run_bi_connector.sh" ]
+ENTRYPOINT [ "/tmp/entry.sh" ]
