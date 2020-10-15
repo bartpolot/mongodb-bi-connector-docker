@@ -8,19 +8,4 @@ DO NOT USE IN PRODUCTION, IT WILL BURN YOUR HOUSE AND MAKE YOUR CHILDREN VEGAN
 
 This bi-connector assume that your mongodb server can connect without any authentication (trusted network).
 "*Authentication in MongoDB is fairly complex*". Thats the reason to make this bi-connector is simple as possible for now.
-
-## docker-compose example
-
-```
-version: "3"
-services:
-  mongodb:
-    image: mongo:bionic
-  
-  mongodb-bi-connector:
-    image: ryanhs/mongodb-bi-connector:latest
-    environment:
-      MONGODB_HOST: mongodb
-      MONGODB_PORT: 27017  
-
-```
+Again, DO NOT USE IN PRODUCTION, IT WILL POISON YOUR DOG AND BRICK YOUR PHONE
