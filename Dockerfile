@@ -11,7 +11,7 @@ RUN curl https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-linu
     mv /tmp/mongodb-bi-linux-x86_64-debian92-v2.12.0 /mongosqld
 
 # Setup default environment variables
-ENV MONGODB_HOST=mongodb MONGODB_PORT=27017 LISTEN_PORT=3307
+ENV MONGODB_HOST=mongodb MONGODB_PORT=27017 LISTEN_PORT=3307 DATABASE="" COLLECTION=""
 
 COPY aggregate.py run_bi_connector.sh /tmp/
 
