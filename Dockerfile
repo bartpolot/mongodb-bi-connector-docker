@@ -2,7 +2,7 @@
 # note: rsyslog & curl (openssl,etc) needed as dependencies too
 FROM debian:stretch
 RUN apt update
-RUN apt install -y rsyslog nano curl
+RUN apt install -y rsyslog nano curl python3 python3-yaml procps
 
 # Download BI Connector to /mongosqld
 WORKDIR /tmp
@@ -11,11 +11,8 @@ RUN curl https://info-mongodb-com.s3.amazonaws.com/mongodb-bi/v2/mongodb-bi-linu
     mv /tmp/mongodb-bi-linux-x86_64-debian92-v2.12.0 /mongosqld
 
 # Setup default environment variables
-ENV MONGODB_HOST mongodb
-ENV MONGODB_PORT 27017
-ENV LISTEN_PORT 3307
+ENV MONGODB_HOST=mongodb MONGODB_PORT=27017 LISTEN_PORT=3307
 
-# Start Everything
-# note: we need to use sh -c "command" to make rsyslog running as deamon too
-RUN service rsyslog start
-CMD sh -c "/mongosqld/bin/mongosqld --logPath /var/log/mongosqld.log --mongo-uri mongodb://$MONGODB_HOST:$MONGODB_PORT/?connect=direct --addr 0.0.0.0:$LISTEN_PORT"
+COPY aggregate.py run_bi_connector.sh /tmp/
+
+ENTRYPOINT [ "/tmp/run_bi_connector.sh" ]

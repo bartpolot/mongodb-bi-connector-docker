@@ -1,6 +1,8 @@
 # Mongodb BI Connector
 
-this docker image for mongodb-bi-connector.
+This is experimental docker image for mongodb-bi-connector using a custom aggregation pipeline from https://github.com/bartpolot/drdl-class-aggregation
+
+DO NOT USE IN PRODUCTION, IT WILL BURN YOUR HOUSE AND MAKE YOUR CHILDREN VEGAN
 
 ## Security / Auth
 
